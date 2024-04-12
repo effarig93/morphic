@@ -10,7 +10,7 @@ export async function taskManager(messages: ExperimentalMessage[]) {
     organization: '' // optional organization
   })
 
-  const llmModel: OpenAIChatModelId = process.env.LLM_MODEL as OpenAIChatModelId || 'gpt-3.5-turbo';
+  const llmModel = process.env.LLM_MODEL || 'gpt-3.5-turbo';
 
   const result = await experimental_generateObject({
     model: openai.chat(llmModel),
