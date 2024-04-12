@@ -10,8 +10,10 @@ export async function taskManager(messages: ExperimentalMessage[]) {
     organization: '' // optional organization
   })
 
+  const llmModel: OpenAIChatModelId = process.env.LLM_MODEL as OpenAIChatModelId || 'gpt-3.5-turbo';
+
   const result = await experimental_generateObject({
-    model: openai.chat(process.env.LLM_MODEL),
+    model: openai.chat(llmModel),
     system: `As a professional web researcher, your primary objective is to fully comprehend the user's query, conduct thorough web searches to gather the necessary information, and provide an appropriate response.
     To achieve this, you must first analyze the user's input and determine the optimal course of action. You have two options at your disposal:
     1. "proceed": If the provided information is sufficient to address the query effectively, choose this option to proceed with the research and formulate a response.
